@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
@@ -18,8 +18,9 @@ import {
   Rating,
   Open,
 } from "./restaurant-info-card.styles";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
-export const RestaurantInfoCard = ({ restuarant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Name",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -30,12 +31,16 @@ export const RestaurantInfoCard = ({ restuarant = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
-  } = restuarant;
+  } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favourite restaurant={restaurant} />
+        <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      </View>
+
       <Info>
         <Title>{name}</Title>
         <Section>

@@ -11,9 +11,9 @@ import {
   restaurantsTransform,
 } from "./restaurants.service";
 
-export const RestaurnatsContext = createContext();
+export const RestaurantsContext = createContext();
 
-export const RestaurnatsContextProvider = ({ children }) => {
+export const RestaurantsContextProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -40,7 +40,7 @@ export const RestaurnatsContextProvider = ({ children }) => {
     }
   }, [location]);
   return (
-    <RestaurnatsContext.Provider
+    <RestaurantsContext.Provider
       value={{
         restaurants,
         isLoading,
@@ -48,6 +48,6 @@ export const RestaurnatsContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </RestaurnatsContext.Provider>
+    </RestaurantsContext.Provider>
   );
 };
